@@ -51,7 +51,9 @@ body{
 .hide{
     display: none;
 }
-
+.message-box{
+    height: 100px;
+}
 .winner{
     padding: 20px;
 }
