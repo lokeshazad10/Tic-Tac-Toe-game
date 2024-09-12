@@ -3,7 +3,6 @@ let msg = document.querySelector(".winner");
 let turnO = true;
 let newGameBtn = document.querySelector(".new-game-btn");
 
-
 //winning comobination
 const winPattern = [
     [0,1,2],
@@ -49,6 +48,7 @@ const checkWinner =()=>{
                 boxes[pattern[1]].style.color = "#eee";
                 boxes[pattern[2]].style.backgroundColor = "#28d128";
                 boxes[pattern[2]].style.color = "#eee";
+                
                 showWinner(posVal1);
             }
         }
@@ -63,6 +63,7 @@ const showWinner=(winner)=>{
     msg.classList.remove("hide");
     disableBoxes();
 }
+
 
 const disableBoxes=()=>{
     for(let box of boxes){

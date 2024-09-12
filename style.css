@@ -42,7 +42,8 @@ body{
 .btn{
     padding: 10px;
     font-size: 25px;
-    background-color: rgb(247, 4, 4);
+    background-color: #8f8f8f;
+    border: none;
     border-radius: 10px;
     font-weight: 700;
     cursor: pointer;
