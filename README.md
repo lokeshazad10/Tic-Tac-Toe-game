@@ -44,4 +44,3 @@ Preferences and scores are saved automatically.
 
 To disable FX quickly:
 - Comment out these lines inside `showResultModal(...)`:
-```js
