@@ -1,31 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe by Lokesh Azad</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tic Tac Toe — Modern</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-        <h1 id="heading">Tic Tac Toe</h1>
-             <div class="game">
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-                 <button class="box"></button>
-            </div>
-            <div class="message-box">
-                <h1 class="winner hide"></h1>
-            </div>
-            <div class="btn-box">
-                <button class="new-game-btn btn">New Game</button>
+    <div class="wrap">
+        <div class="card">
+            <div class="header">
+                <div class="title">
+                    <div class="logo" aria-hidden="true"></div>
+                    <div>
+                        <h1>Tic Tac Toe</h1>
+                        <div class="muted">Sleek UI, keyboard accessible, and an unbeatable AI</div>
+                    </div>
+                </div>
             </div>
 
-    <script src="app.js"></script>
+            <div class="panel">
+                <section class="board-wrap">
+                    <div class="status">
+                        <div class="turn">
+                            <span class="muted">Turn:</span>
+                            <span id="turnPill" class="pill">X</span>
+                        </div>
+                        <div class="score" aria-label="Scoreboard">
+                            <div class="box"><span class="x">X</span> <span id="scoreX">0</span></div>
+                            <div class="box"><span class="o">O</span> <span id="scoreO">0</span></div>
+                            <div class="box"><span class="t">Ties</span> <span id="scoreT">0</span></div>
+                        </div>
+                    </div>
+
+                    <div id="board" class="board" role="grid" aria-label="Tic Tac Toe board">
+                        <!-- cells will be injected -->
+                    </div>
+
+                    <div class="footer">
+                        <div id="statusText" class="muted">X goes first.</div>
+                        <div class="row">
+                            <button id="undoBtn" title="Undo last move (PvP, or undo to your turn vs AI)">Undo</button>
+                            <button id="newBtn" class="primary">New round</button>
+                            <button id="resetBtn" class="warn">Reset scores</button>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="controls" aria-label="Game controls">
+                    <div class="row" role="group" aria-label="Mode">
+                        <label>Mode</label>
+                        <div class="seg" style="margin-left:auto">
+                            <input type="radio" name="mode" id="modePvp" value="pvp">
+                            <label for="modePvp">2 Players</label>
+                            <input type="radio" name="mode" id="modeAi" value="ai" checked>
+                            <label for="modeAi">Vs Computer</label>
+                        </div>
+                    </div>
+
+                    <div id="aiBlock">
+                        <div class="row" role="group" aria-label="AI plays as">
+                            <label>AI plays as</label>
+                            <div class="seg" style="margin-left:auto">
+                                <input type="radio" name="aiSide" id="aiX" value="X">
+                                <label for="aiX">X</label>
+                                <input type="radio" name="aiSide" id="aiO" value="O" checked>
+                                <label for="aiO">O</label>
+                            </div>
+                        </div>
+
+                        <div class="row level-box">
+                            <label for="difficulty">Difficulty</label>
+                            <select id="difficulty" style="margin-left:auto">
+                                <option value="easy" class="level">Easy</option>
+                                <option value="normal" selected class="level">Normal</option>
+                                <option value="impossible" class="level">Impossible</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" aria-hidden="true">
+                        <div class="muted">Pro tips:</div>
+                        <ul class="muted" style="margin:6px 0 0 14px; padding:0 0 0 10px; line-height:1.3">
+                            <li>Use arrow keys to move, Enter/Space to place.</li>
+                            <li>Impossible mode uses perfect play (minimax).</li>
+                            <li>Made With ❤️ By Lokesh Azad</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <div id="ariaStatus" class="sr-only" role="status" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="resultTitle"
+        aria-describedby="resultSub" hidden>
+        <div class="modal">
+            <div class="badge" aria-hidden="true"></div>
+            <h2 id="resultTitle">Result</h2>
+            <p id="resultSub" class="muted">Play again?</p>
+            <div class="actions">
+                <button id="playAgainBtn" class="primary">Play again</button>
+                <button id="closeResultBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+    <script src="./app.js"></script>
 </body>
+
 </html>
